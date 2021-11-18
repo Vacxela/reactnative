@@ -1,37 +1,11 @@
-import React, { Component } from 'react';
-import {
-  AppRegistry,
-  StyleSheet,
-  Text,
-  View
-} from 'react-native';
-
-class ReactNativeWeb extends Component {
-  render() {
-    return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native!
-        </Text>
-      </View>
-    );
-  }
+import {AppRegistry} from 'react-native';
+import {name as appName} from './app.json';
+import App from './App';
+if (module.hot) {
+  module.hot.accept();
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#142a3d',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-    color: '#ffffff',
-  },
+AppRegistry.registerComponent(appName, () => App);
+AppRegistry.runApplication(appName, {
+  initialProps: {},
+  rootTag: document.getElementById('app-root'),
 });
-
-AppRegistry.registerComponent('ReactNativeWeb', () => ReactNativeWeb);
-AppRegistry.runApplication('WebTest', { rootTag: document.getElementById('react-native-app') });

@@ -4,7 +4,6 @@ import * as React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import ProjectList from './Components/comp';
 
 export default function Example() {
   
@@ -19,10 +18,10 @@ export default function Example() {
           options={{ title: 'Field Data Capture' }}
         />
         <Stack.Screen
-          name="ProjectList"
-          component={ProjectList}
-          options={{ title: 'My Defaults' }}
-        />
+			name="Profile"
+			component={ProfileScreen}
+			options={{ title: 'My Defaults' }}
+		/>
       </Stack.Navigator>
     </NavigationContainer>
   );
@@ -59,7 +58,7 @@ const HomeScreen = ({ navigation }) => {
 		  spacing={12}
 		  style={styles.gridView}
 		  renderItem={({ item, section, index }) => (
-			  <Pressable onPress={() => navigation.navigate('ProjectList', { name: 'Jane' })}>
+			  <Pressable onPress={() => navigation.navigate('Profile', { name: 'Jane' })}>
 				<View style={[styles.itemContainer, { backgroundColor: item.code }]}>
 					<MaterialCommunityIcons name="clipboard-list-outline" size={64}/>
 					<Text style={styles.itemName}>{item.name}</Text>
@@ -79,6 +78,10 @@ const HomeScreen = ({ navigation }) => {
 		</View>
 	 </View>
   );
+};
+
+const ProfileScreen = ({ navigation, route }) => {
+  return <Text>This is {route.params.name}'s profile</Text>;
 };
 
 const styles = StyleSheet.create({
