@@ -4,7 +4,7 @@ import * as React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import ProjectList from './Components/comp';
+import TopTabScreen from './src/MyDefaults/screens/TopTabScreen';
 
 export default function Example() {
   
@@ -20,7 +20,7 @@ export default function Example() {
         />
         <Stack.Screen
           name="ProjectList"
-          component={ProjectList}
+          component={TopTabScreen}
           options={{ title: 'My Defaults' }}
         />
       </Stack.Navigator>
@@ -63,7 +63,6 @@ const HomeScreen = ({ navigation }) => {
 				<View style={[styles.itemContainer, { backgroundColor: item.code }]}>
 					<MaterialCommunityIcons name="clipboard-list-outline" size={64}/>
 					<Text style={styles.itemName}>{item.name}</Text>
-					<Text style={styles.itemCode}>{item.code}</Text>
 				</View>
 			  </Pressable>
 		  )}
@@ -97,11 +96,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: '#fff',
     fontWeight: '600',
-  },
-  itemCode: {
-    fontWeight: '600',
-    fontSize: 12,
-    color: '#fff',
+    marginBottom: 12
   },
   sectionHeader: {
     flex: 1,
